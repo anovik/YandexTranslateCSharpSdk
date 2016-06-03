@@ -1,0 +1,11 @@
+/YandexTranslateCSharpSdkTests/obj/Debug
+/YandexTranslateCSharpSdkTests/obj/Release
+/.vs/YandexTranslateCSharpSdk/v14/.suo
+/YandexTranslateCSharpSdk/bin/Debug/*.dll
+/YandexTranslateCSharpSdk/bin/Debug/*.pdb
+/YandexTranslateCSharpSdk/obj/Debug
+/YandexTranslateCSharpSdkTests/bin/Debug
+/YandexTranslateCSharpSdk/bin/Release/*.dll
+/YandexTranslateCSharpSdk/bin/Release/*.pdb
+/YandexTranslateCSharpSdk/obj/Release
+/YandexTranslateCSharpSdkTests/bin/Release
