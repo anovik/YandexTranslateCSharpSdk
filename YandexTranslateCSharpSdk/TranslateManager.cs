@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace YandexTranslateCSharpSdk
 {
@@ -32,7 +33,14 @@ namespace YandexTranslateCSharpSdk
         {
             string response = await PostData(text, direction,
                 "https://translate.yandex.net/api/v1.5/tr/translate?", "application/xml");
-            return response;                 
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(response);
+            XmlNodeList list = xmlDoc.GetElementsByTagName("text");
+            if (list.Count > 0)
+            {
+                return list[0].InnerText;
+            }
+            return "";
         }
         private async Task<string> TranslateTextJson(string text, string direction)
         {

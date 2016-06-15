@@ -40,7 +40,7 @@ namespace YandexTranslateCSharpSdkTests
             LanguagesManager langManager = new LanguagesManager();
             langManager.ApiKey = _apiKey;
             langManager.IsJson = false;             
-            List<string> languages = await langManager.GetLanguages();
+            List<string> languages = await langManager.GetLanguages();            
             Assert.AreNotEqual(languages, null);
             Assert.IsTrue(languages.Contains("en"));
             Assert.IsTrue(languages.Contains("ru"));
@@ -86,6 +86,7 @@ namespace YandexTranslateCSharpSdkTests
             translateManager.IsJson = false;
             string translatedText = await translateManager.TranslateText(_randomEnglishText, "en-ru");
             Console.WriteLine(translatedText);
+            Assert.IsTrue(translatedText.StartsWith("Покорить"));
         }
 
         [TestMethod]
@@ -96,6 +97,7 @@ namespace YandexTranslateCSharpSdkTests
             translateManager.IsJson = true;
             string translatedText = await translateManager.TranslateText(_randomEnglishText, "en-ru");
             Console.WriteLine(translatedText);
+            Assert.IsTrue(translatedText.StartsWith("Покорить"));
         }
     }
 }

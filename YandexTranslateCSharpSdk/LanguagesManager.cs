@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace YandexTranslateCSharpSdk
 {
@@ -31,7 +32,14 @@ namespace YandexTranslateCSharpSdk
         private async Task<List<string>> GetLanguagesXml()
         {
             List<string> languages = new List<string>();
-            string response = await PostData("https://translate.yandex.net/api/v1.5/tr/getLangs?", "application/xml");          
+            string response = await PostData("https://translate.yandex.net/api/v1.5/tr/getLangs?", "application/xml");
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(response);            
+            XmlNodeList list = xmlDoc.GetElementsByTagName("Item");
+            foreach(XmlNode node in list)
+            {
+                languages.Add(node.Attributes["key"].Value);
+            }
             return languages;
         }
 

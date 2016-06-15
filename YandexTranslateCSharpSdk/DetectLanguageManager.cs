@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace YandexTranslateCSharpSdk
 {
@@ -32,7 +33,15 @@ namespace YandexTranslateCSharpSdk
         {
             string response = await PostData(text, "https://translate.yandex.net/api/v1.5/tr/detect?",
                "application/xml");
-            return response;
+            XmlDocument xmlDoc = new XmlDocument();            
+            xmlDoc.LoadXml(response);
+            XmlNodeList list = xmlDoc.GetElementsByTagName("DetectedLang");
+            if (list.Count > 0)
+            {
+                return list[0].Attributes["lang"].Value;
+            }
+            return "";
+            
         }
         private async Task<string> DetectLanguageJson(string text)
         {
