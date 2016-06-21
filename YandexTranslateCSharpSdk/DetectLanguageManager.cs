@@ -41,7 +41,7 @@ namespace YandexTranslateCSharpSdk
             {
                 return list[0].Attributes["lang"].Value;
             }
-            return "";
+            return null;
             
         }
         private async Task<string> DetectLanguageJson(string text)

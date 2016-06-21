@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Xml;
 
 namespace YandexTranslateCSharpSdk
@@ -40,13 +42,27 @@ namespace YandexTranslateCSharpSdk
             {
                 return list[0].InnerText;
             }
-            return "";
+            return null;
         }
         private async Task<string> TranslateTextJson(string text, string direction)
         {
             string response = await PostData(text, direction,
              "https://translate.yandex.net/api/v1.5/tr.json/translate?", "application/json");
-            return response;
+            var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(response);
+            var outputText = dict["text"];
+            if (outputText == null)
+            {
+                return null; 
+            }
+            else
+            {
+                ArrayList list = outputText as ArrayList;
+                if (list.Count > 0)
+                {
+                    return list[0].ToString();
+                }
+            }
+            return null;
         }
 
         private async Task<string> PostData(string text, string direction, string url, string mediaType)

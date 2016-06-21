@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Xml;
 
 namespace YandexTranslateCSharpSdk
@@ -47,6 +48,8 @@ namespace YandexTranslateCSharpSdk
         {
             List<string> languages = new List<string>();
             string response = await PostData("https://translate.yandex.net/api/v1.5/tr.json/getLangs?", "application/json");
+            var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(response);
+            var lang = dict["langs"];
             return languages;           
         }
 
