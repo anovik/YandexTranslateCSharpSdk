@@ -45,23 +45,22 @@ namespace YandexTranslateCSharpSdk
         }
 
         private async Task<List<string>> GetLanguagesJson()
-        {
-            List<string> languages = new List<string>();
-            string response = await PostData("https://translate.yandex.net/api/v1.5/tr.json/getLangs?", "application/json");
+        {            
+            string response = await PostData("https://translate.yandex.net/api/v1.5/tr.json/getLangs?", "application/json");            
             var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(response);
-            var lang = dict["langs"];
-            return languages;           
+            Dictionary<string, object> lang = dict["langs"] as Dictionary<string, object>;
+            return new List<string>(lang.Keys);           
         }
 
         private async Task<string> PostData(string url, string mediaType)
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("https://translate.yandex.net/api/v1.5/tr/getLangs?");
+                httpClient.BaseAddress = new Uri(url);
 
                 httpClient.DefaultRequestHeaders
                   .Accept
-                  .Add(new MediaTypeWithQualityHeaderValue("application/xml"));
+                  .Add(new MediaTypeWithQualityHeaderValue(mediaType));
 
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post,
                     "");
