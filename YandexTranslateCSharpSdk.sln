@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranslateCSharpSdkTes
 		{5E7A4245-F0EC-4189-8387-637D7733D8C7} = {5E7A4245-F0EC-4189-8387-637D7733D8C7}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranslateCSharpDemo", "YandexTranslateCSharpDemo\YandexTranslateCSharpDemo.csproj", "{920A6E8D-9ED9-4D82-BE88-68E2B52B2E93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{D588A6BC-A8AF-4578-BCCA-0EF907998195}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D588A6BC-A8AF-4578-BCCA-0EF907998195}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D588A6BC-A8AF-4578-BCCA-0EF907998195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{920A6E8D-9ED9-4D82-BE88-68E2B52B2E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{920A6E8D-9ED9-4D82-BE88-68E2B52B2E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{920A6E8D-9ED9-4D82-BE88-68E2B52B2E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{920A6E8D-9ED9-4D82-BE88-68E2B52B2E93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
