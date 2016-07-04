@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YandexTranslateCSharpDemo"
         mc:Ignorable="d"
-        Title="Yandex.Translate CSharp SDK Demo" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Yandex.Translate CSharp SDK Demo" Height="600" Width="800" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Close"/>                
+            </MenuItem>
+            <MenuItem Header="_Options">
+                <MenuItem Header="_Set Key..."/>
+            </MenuItem>
+        </Menu>
+        <Grid Margin="10,10,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Width="150" Name="languagesCombo1" />
+                <Button Width="75">Detect</Button>
+            </StackPanel>
+            <TextBlock Grid.Row="1" Name="text1"></TextBlock>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                <ComboBox Width="150" Name="languagesCombo2" />
+                <Button Width="75">Detect</Button>
+            </StackPanel>
+            <TextBlock Grid.Row="1" Grid.Column="1" Name="text2"></TextBlock>
+        </Grid>
+    </DockPanel>
 </Window>

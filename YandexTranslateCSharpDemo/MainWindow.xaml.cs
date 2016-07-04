@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using YandexTranslateCSharpSdk;
 
 namespace YandexTranslateCSharpDemo
 {
@@ -20,9 +8,18 @@ namespace YandexTranslateCSharpDemo
     /// </summary>
     public partial class MainWindow : Window
     {
+        string _apiKey;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //LanguagesManager langManager = new LanguagesManager();
+            //langManager.ApiKey = _apiKey;            
+            //List<string> languages = await langManager.GetLanguages();
         }
     }
 }
