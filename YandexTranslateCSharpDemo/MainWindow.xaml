@@ -10,10 +10,10 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Close"/>                
+                <MenuItem Header="_Close" Name="closeItem" Click="closeItem_Click"/>                
             </MenuItem>
             <MenuItem Header="_Options">
-                <MenuItem Header="_Set Key..."/>
+                <MenuItem Header="_Set Key..." Name="setKeyItem" Click="setKeyItem_Click"/>
             </MenuItem>
         </Menu>
         <Grid Margin="10,10,10,10">
@@ -27,8 +27,9 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
-                <ComboBox Width="150" Name="languagesCombo1" />
+                <ComboBox Width="150" Name="languagesCombo" />
                 <Button Width="75" Margin="10, 0, 0, 0" Name="detectButton" Click="detectButton_Click">Detect</Button>
+                <Button Width="75" Margin="10, 0, 0, 0" Name="translateButton" Click="translateButton_Click">Translate</Button>
             </StackPanel>
             <TextBox Margin="0,10,0,0" Grid.Row="1" Name="text1" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
             <StackPanel Orientation="Horizontal" Grid.Column="1" >
