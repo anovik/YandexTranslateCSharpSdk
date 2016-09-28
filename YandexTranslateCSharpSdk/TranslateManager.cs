@@ -13,25 +13,11 @@ namespace YandexTranslateCSharpSdk
     /// Wrapper for Translate a text methods
     /// https://tech.yandex.com/translate/doc/dg/reference/translate-docpage/
     /// </summary>
-    public class TranslateManager
+    internal class TranslateManager
     {
-        public string ApiKey { get; set; }
+        internal string ApiKey { get; set; }
 
-        public bool IsJson { get; set; }
-
-        public async Task<string> TranslateText(string text, string direction)
-        {
-            if (IsJson)
-            {
-                return await TranslateTextJson(text, direction);
-            }
-            else
-            {
-                return await TranslateTextXml(text, direction);
-            }
-        }
-
-        private async Task<string> TranslateTextXml(string text, string direction)
+        internal async Task<string> TranslateTextXml(string text, string direction)
         {
             string response = await PostData(text, direction,
                 "https://translate.yandex.net/api/v1.5/tr/translate?", "application/xml");
@@ -44,7 +30,7 @@ namespace YandexTranslateCSharpSdk
             }
             return null;
         }
-        private async Task<string> TranslateTextJson(string text, string direction)
+        internal async Task<string> TranslateTextJson(string text, string direction)
         {
             string response = await PostData(text, direction,
              "https://translate.yandex.net/api/v1.5/tr.json/translate?", "application/json");
@@ -67,27 +53,34 @@ namespace YandexTranslateCSharpSdk
 
         private async Task<string> PostData(string text, string direction, string url, string mediaType)
         {
-            using (HttpClient httpClient = new HttpClient())
+            try
             {
-                httpClient.BaseAddress = new Uri(url);
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    httpClient.BaseAddress = new Uri(url);
 
-                httpClient.DefaultRequestHeaders
-                  .Accept
-                  .Add(new MediaTypeWithQualityHeaderValue(mediaType));
+                    httpClient.DefaultRequestHeaders
+                      .Accept
+                      .Add(new MediaTypeWithQualityHeaderValue(mediaType));
 
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post,
-                    "");
+                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post,
+                        "");
 
-                var postData = new List<KeyValuePair<string, string>>();
-                postData.Add(new KeyValuePair<string, string>("key", ApiKey));
-                postData.Add(new KeyValuePair<string, string>("text", text));
-                postData.Add(new KeyValuePair<string, string>("lang", direction));
+                    var postData = new List<KeyValuePair<string, string>>();
+                    postData.Add(new KeyValuePair<string, string>("key", ApiKey));
+                    postData.Add(new KeyValuePair<string, string>("text", text));
+                    postData.Add(new KeyValuePair<string, string>("lang", direction));
 
-                HttpContent content = new FormUrlEncodedContent(postData);
-                request.Content = content;
-                HttpResponseMessage response = await httpClient.SendAsync(request)
-                       .ContinueWith((postTask) => postTask.Result.EnsureSuccessStatusCode());
-                return await response.Content.ReadAsStringAsync();
+                    HttpContent content = new FormUrlEncodedContent(postData);
+                    request.Content = content;
+                    HttpResponseMessage response = await httpClient.SendAsync(request)
+                           .ContinueWith((postTask) => postTask.Result.EnsureSuccessStatusCode());
+                    return await response.Content.ReadAsStringAsync();
+                }
+            }
+            catch(Exception)
+            {
+                throw new Exception();
             }
         }
     }

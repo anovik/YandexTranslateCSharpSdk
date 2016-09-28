@@ -10,9 +10,7 @@ namespace YandexTranslateCSharpDemo
     public partial class MainWindow : Window
     {
         string apiKey;
-        LanguagesManager langManager = new LanguagesManager();
-        DetectLanguageManager detectManager = new DetectLanguageManager();
-        TranslateManager translateManager = new TranslateManager();
+        YandexTranslateSdk wrapper = new YandexTranslateSdk();
 
         public MainWindow()
         {
@@ -28,8 +26,8 @@ namespace YandexTranslateCSharpDemo
         {
             if (apiKey != null && !string.IsNullOrEmpty(text1.Text))
             {
-                detectManager.ApiKey = apiKey;
-                string lang = await detectManager.DetectLanguage(text1.Text);
+                wrapper.ApiKey = apiKey;
+                string lang = await wrapper.DetectLanguage(text1.Text);
                 languagesCombo.SelectedValue = lang;
             }
         }
@@ -38,8 +36,8 @@ namespace YandexTranslateCSharpDemo
         {
             if (apiKey != null && !string.IsNullOrEmpty(text2.Text))
             {
-                detectManager.ApiKey = apiKey;
-                string lang = await detectManager.DetectLanguage(text2.Text);
+                wrapper.ApiKey = apiKey;
+                string lang = await wrapper.DetectLanguage(text2.Text);
                 languagesCombo2.SelectedValue = lang;
             }
         }
@@ -63,9 +61,9 @@ namespace YandexTranslateCSharpDemo
         {
             if (apiKey != null && !string.IsNullOrEmpty(text1.Text))
             {
-                translateManager.ApiKey = apiKey;
+                wrapper.ApiKey = apiKey;
                 string direction = languagesCombo.SelectedValue + "-" + languagesCombo2.SelectedValue;
-                string translatedText = await translateManager.TranslateText(text1.Text, direction);
+                string translatedText = await wrapper.TranslateText(text1.Text, direction);
                 text2.Text = translatedText;
             }
         }
@@ -74,8 +72,8 @@ namespace YandexTranslateCSharpDemo
         {
             if (apiKey != null)
             {
-                langManager.ApiKey = apiKey;
-                List<string> languages = await langManager.GetLanguages();
+                wrapper.ApiKey = apiKey;
+                List<string> languages = await wrapper.GetLanguages();
                 languagesCombo.ItemsSource = languagesCombo2.ItemsSource = languages;
             }
         }
