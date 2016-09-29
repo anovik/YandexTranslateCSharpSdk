@@ -64,9 +64,10 @@ namespace YandexTranslateCSharpSdk
                     return await response.Content.ReadAsStringAsync();
                 }
             }
-            catch(Exception)
+            catch(HttpRequestException)
             {
-                throw new Exception();
+                throw new YandexTranslateException(
+                    "Bad parameters or other problem communicating Yandex.Translate API");
             }
         }
     }

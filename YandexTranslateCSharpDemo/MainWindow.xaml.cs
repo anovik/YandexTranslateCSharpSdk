@@ -82,7 +82,16 @@ namespace YandexTranslateCSharpDemo
             if (apiKey != null)
             {
                 wrapper.ApiKey = apiKey;
-                List<string> languages = await wrapper.GetLanguages();
+                List<string> languages;
+                try
+                {
+                    languages = await wrapper.GetLanguages();
+                }
+                catch(YandexTranslateException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
                 languagesCombo.ItemsSource = languagesCombo2.ItemsSource = languages;
                 if (languagesCombo.Items.Count > 0)
                 {

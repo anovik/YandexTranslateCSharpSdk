@@ -100,6 +100,7 @@ namespace YandexTranslateCSharpSdkTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(YandexTranslateException))]
         public async Task CheckBadKey()
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
@@ -108,6 +109,7 @@ namespace YandexTranslateCSharpSdkTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(YandexTranslateException))]
         public async Task CheckNullKey()
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
@@ -116,6 +118,7 @@ namespace YandexTranslateCSharpSdkTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(YandexTranslateException))]
         public async Task CheckBadDirection()
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
