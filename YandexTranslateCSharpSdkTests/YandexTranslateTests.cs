@@ -85,7 +85,7 @@ namespace YandexTranslateCSharpSdkTests
             wrapper.IsJson = false;
             string translatedText = await wrapper.TranslateText(_randomEnglishText, "en-ru");
             Console.WriteLine(translatedText);
-            Assert.IsTrue(translatedText.StartsWith("Покорить"));
+            Assert.IsTrue(!string.IsNullOrEmpty(translatedText));
         }
 
         [TestMethod]
@@ -96,7 +96,32 @@ namespace YandexTranslateCSharpSdkTests
             wrapper.IsJson = true;
             string translatedText = await wrapper.TranslateText(_randomEnglishText, "en-ru");
             Console.WriteLine(translatedText);
-            Assert.IsTrue(translatedText.StartsWith("Покорить"));
+            Assert.IsTrue(!string.IsNullOrEmpty(translatedText));
+        }
+
+        [TestMethod]
+        public async Task CheckBadKey()
+        {
+            YandexTranslateSdk wrapper = new YandexTranslateSdk();
+            wrapper.ApiKey = "KeyNotExists";
+            List<string> languages = await wrapper.GetLanguages();
+        }
+
+        [TestMethod]
+        public async Task CheckNullKey()
+        {
+            YandexTranslateSdk wrapper = new YandexTranslateSdk();
+            wrapper.ApiKey = null;
+            List<string> languages = await wrapper.GetLanguages();
+        }
+
+        [TestMethod]
+        public async Task CheckBadDirection()
+        {
+            YandexTranslateSdk wrapper = new YandexTranslateSdk();
+            wrapper.ApiKey = _apiKey;
+            wrapper.IsJson = true;
+            string translatedText = await wrapper.TranslateText(_randomEnglishText, "BAD");            
         }
     }
 }
