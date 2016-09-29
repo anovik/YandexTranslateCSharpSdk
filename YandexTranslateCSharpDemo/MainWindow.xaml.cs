@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System.Collections.Generic;
 using System.Windows;
 using YandexTranslateCSharpSdk;
 
@@ -19,7 +20,13 @@ namespace YandexTranslateCSharpDemo
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-             LoadLanguages();
+            object key = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\YandexTranslateCSharpDemo",
+                                    "ApiKey", null);
+            if (key != null)
+            {
+                apiKey = key.ToString();
+            }
+            LoadLanguages();
         }
 
         private async void detectButton_Click(object sender, RoutedEventArgs e)
@@ -45,10 +52,12 @@ namespace YandexTranslateCSharpDemo
         private void setKeyItem_Click(object sender, RoutedEventArgs e)
         {
             SetKeyWindow setKeyWindow = new SetKeyWindow(apiKey);
+            setKeyWindow.Owner = this;
             if (setKeyWindow.ShowDialog() == true)
             {
                 apiKey = setKeyWindow.GetKey();
                 LoadLanguages();
+                Registry.SetValue(@"HKEY_CURRENT_USER\SOFTWARE\YandexTranslateCSharpDemo", "ApiKey", apiKey);
             }
         }
 
@@ -75,6 +84,11 @@ namespace YandexTranslateCSharpDemo
                 wrapper.ApiKey = apiKey;
                 List<string> languages = await wrapper.GetLanguages();
                 languagesCombo.ItemsSource = languagesCombo2.ItemsSource = languages;
+                if (languagesCombo.Items.Count > 0)
+                {
+                    languagesCombo.SelectedIndex = 0;
+                    languagesCombo2.SelectedIndex = 0;
+                }
             }
         }
     }
