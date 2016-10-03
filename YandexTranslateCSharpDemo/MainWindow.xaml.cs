@@ -34,8 +34,15 @@ namespace YandexTranslateCSharpDemo
             if (apiKey != null && !string.IsNullOrEmpty(text1.Text))
             {
                 wrapper.ApiKey = apiKey;
-                string lang = await wrapper.DetectLanguage(text1.Text);
-                languagesCombo.SelectedValue = lang;
+                try
+                {
+                    string lang = await wrapper.DetectLanguage(text1.Text);
+                    languagesCombo.SelectedValue = lang;
+                }
+                catch(YandexTranslateException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -44,8 +51,15 @@ namespace YandexTranslateCSharpDemo
             if (apiKey != null && !string.IsNullOrEmpty(text2.Text))
             {
                 wrapper.ApiKey = apiKey;
-                string lang = await wrapper.DetectLanguage(text2.Text);
-                languagesCombo2.SelectedValue = lang;
+                try
+                {
+                    string lang = await wrapper.DetectLanguage(text2.Text);
+                    languagesCombo2.SelectedValue = lang;
+                }
+                catch (YandexTranslateException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -72,8 +86,14 @@ namespace YandexTranslateCSharpDemo
             {
                 wrapper.ApiKey = apiKey;
                 string direction = languagesCombo.SelectedValue + "-" + languagesCombo2.SelectedValue;
-                string translatedText = await wrapper.TranslateText(text1.Text, direction);
-                text2.Text = translatedText;
+                try
+                {
+                    text2.Text = await wrapper.TranslateText(text1.Text, direction);
+                }
+                catch (YandexTranslateException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
