@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\YandexTranslateCSharpSdk\DetectLanguageManager.cs" Link="DetectLanguageManager.cs" />
+    <Compile Include="..\YandexTranslateCSharpSdk\LanguagesManager.cs" Link="LanguagesManager.cs" />
+    <Compile Include="..\YandexTranslateCSharpSdk\TranslateManager.cs" Link="TranslateManager.cs" />
+    <Compile Include="..\YandexTranslateCSharpSdk\YandexTranslateException.cs" Link="YandexTranslateException.cs" />
+    <Compile Include="..\YandexTranslateCSharpSdk\YandexTranslateSdk.cs" Link="YandexTranslateSdk.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp.Newtonsoft.Json.NetCore" Version="1.0.0" />
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
