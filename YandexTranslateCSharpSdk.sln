@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranslateCSharpDemo",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranslateCoreSdk", "YandexTranslateCoreSdk\YandexTranslateCoreSdk.csproj", "{0A10549D-8B2F-4B1D-AF86-A204F8953CDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranslateCoreSdkDemo", "YandexTranslateCoreSdkDemo\YandexTranslateCoreSdkDemo.csproj", "{F2C0554F-13A3-40C7-B4B7-9BABDAAD615C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranlateCoreSdkTests", "YandexTranlateCoreSdkTests\YandexTranlateCoreSdkTests.csproj", "{1E2F72DC-0F5C-476C-8255-1FC36FC209E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +40,14 @@ Global
 		{0A10549D-8B2F-4B1D-AF86-A204F8953CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A10549D-8B2F-4B1D-AF86-A204F8953CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A10549D-8B2F-4B1D-AF86-A204F8953CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C0554F-13A3-40C7-B4B7-9BABDAAD615C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C0554F-13A3-40C7-B4B7-9BABDAAD615C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C0554F-13A3-40C7-B4B7-9BABDAAD615C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C0554F-13A3-40C7-B4B7-9BABDAAD615C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2F72DC-0F5C-476C-8255-1FC36FC209E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2F72DC-0F5C-476C-8255-1FC36FC209E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2F72DC-0F5C-476C-8255-1FC36FC209E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2F72DC-0F5C-476C-8255-1FC36FC209E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
