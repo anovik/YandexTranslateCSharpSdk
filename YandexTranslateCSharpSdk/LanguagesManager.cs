@@ -38,11 +38,12 @@ namespace YandexTranslateCSharpSdk
         {            
             string response = await PostData("https://translate.yandex.net/api/v1.5/tr.json/getLangs?", "application/json");
 #if NETCOREAPP1_1
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(response); 
+            var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(response);
+            var lang = JsonConvert.DeserializeObject<Dictionary<string, object>>(dict["langs"].ToString());
 #else
             var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(response);
-#endif            
-            Dictionary<string, object> lang = dict["langs"] as Dictionary<string, object>;
+            var lang = dict["langs"] as Dictionary<string, object>;
+#endif
             return new List<string>(lang.Keys);           
         }
 
