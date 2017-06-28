@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 #else
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 #endif
 using System.Xml;
 
@@ -50,11 +51,16 @@ namespace YandexTranslateCSharpSdk
             }
             else
             {
-                ArrayList list = outputText as ArrayList;
+#if NETCOREAPP1_1
+                JArray list = outputText as JArray;
+#else
+                ArrayList list = outputText as ArrayList;               
+#endif
                 if (list.Count > 0)
                 {
                     return list[0].ToString();
                 }
+
             }
             return null;
         }
