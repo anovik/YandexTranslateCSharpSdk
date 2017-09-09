@@ -7,11 +7,13 @@ Project includes C# library with wrapper methods for Yandex Translate API, Visua
 
 Requires .NET Framework 4.5 or higher. It has also a .NET Core version. The library is based on HttpClient.
 
-To run tests create key.txt in YandexTranslateCSharpSdkTests folder and put the key which you receive from Yandex here:
+To run tests get API key from Yandex:
 
 https://tech.yandex.com/keys/get/?service=trnsl
 
-List of supported languages can be found here:
+and put it into the file key.txt in YandexTranslateCSharpSdkTests.
+
+List of languages supported by Yandex.Translate API can be found here:
 
 https://tech.yandex.com/translate/doc/dg/concepts/api-overview-docpage/
 
