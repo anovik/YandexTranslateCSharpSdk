@@ -1,4 +1,7 @@
 # YandexTranslateCSharpSdk
+
+![alt Appveyor status](https://ci.appveyor.com/api/projects/status/t069512wi8cywvjl/branch/master?svg=true)
+
 YandexTranslateCSharpSdk is a .NET C# library providing access for Yandex Translate API:
 
 https://tech.yandex.com/translate
