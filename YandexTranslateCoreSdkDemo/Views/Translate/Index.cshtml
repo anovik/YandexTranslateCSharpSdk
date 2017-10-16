@@ -1,7 +1,37 @@
-
+@model YandexTranslateCoreSdkDemo.Models.TranslateViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>YandexTranslateCoreSdk Demo</legend>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Key, new { style = "display: inline-block; width: 150px;" })
+            @Html.TextBoxFor(model => model.Key, new { style = "width:500px" })
+            @Html.ValidationMessageFor(model => model.Key, null, new { @class = "text-danger" })
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.InputText, new { style = "display: inline-block; width: 150px;" })
+            @Html.TextAreaFor(model => model.InputText, new { style = "width:500px" })
+            @Html.ValidationMessageFor(model => model.InputText, null, new { @class = "text-danger" })
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Translate" class="btn btn-default" />
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.OutputText, new { style = "display: inline-block; width: 150px;" })
+            @Html.TextAreaFor(model => model.OutputText, new { style = "width:500px" })
+            @Html.ValidationMessageFor(model => model.OutputText, null, new { @class = "text-danger" })
+        </div>
+        <br />
+    </fieldset>
+}
 
