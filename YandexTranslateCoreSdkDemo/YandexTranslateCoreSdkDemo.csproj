@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Views\Translate\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>

@@ -7,25 +7,39 @@ namespace YandexTranslateCoreSdkDemo.Controllers
 {
     public class TranslateController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            TranslateViewModel model = new TranslateViewModel();            
+            return View(model);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Index(TranslateViewModel model)
+        [HttpPost]       
+        public async Task<IActionResult> Translate(TranslateViewModel model)
         {
             if (ModelState.IsValid)
             {
                 YandexTranslateSdk wrapper = new YandexTranslateSdk();
                 wrapper.ApiKey = model.Key;
-                model.OutputText = await wrapper.TranslateText(model.InputText, "en-ru");
+                string inputLanguage = await wrapper.DetectLanguage(model.InputText);
+                string outputLanguage = model.OutputLanguage;
+                string direction = inputLanguage + "-" + outputLanguage;
+                model.OutputText = await wrapper.TranslateText(model.InputText, direction);
 
-                ModelState.Clear();                
+                ModelState.Clear();
 
-                return View(model);
+                return View("Index", model);
             }
-            return View();
+            return View("Index", model);
+        }
+
+        [HttpPost]      
+        public async Task<ActionResult> GetLanguages(TranslateViewModel model)
+        {
+            YandexTranslateSdk wrapper = new YandexTranslateSdk();
+            wrapper.ApiKey = model.Key;
+            model.Languages = await wrapper.GetLanguages();
+            return View("Index", model);
         }
     }
 }
