@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranslateCoreSdk", "Y
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranslateCoreSdkDemo", "YandexTranslateCoreSdkDemo\YandexTranslateCoreSdkDemo.csproj", "{F2C0554F-13A3-40C7-B4B7-9BABDAAD615C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranlateCoreSdkTests", "YandexTranlateCoreSdkTests\YandexTranlateCoreSdkTests.csproj", "{1E2F72DC-0F5C-476C-8255-1FC36FC209E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexTranslateCoreSdkTests", "YandexTranlateCoreSdkTests\YandexTranslateCoreSdkTests.csproj", "{1E2F72DC-0F5C-476C-8255-1FC36FC209E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
