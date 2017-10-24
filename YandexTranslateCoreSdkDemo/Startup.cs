@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace YandexTranslateCoreSdkDemo
 {
@@ -11,6 +12,16 @@ namespace YandexTranslateCoreSdkDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // Adds a default in-memory implementation of IDistributedCache.
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.CookieHttpOnly = true;
+            });
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -41,6 +52,7 @@ namespace YandexTranslateCoreSdkDemo
             }
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

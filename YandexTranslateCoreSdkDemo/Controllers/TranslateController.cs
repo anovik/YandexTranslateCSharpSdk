@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using YandexTranslateCoreSdkDemo.Models;
 using YandexTranslateCSharpSdk;
@@ -25,6 +27,7 @@ namespace YandexTranslateCoreSdkDemo.Controllers
                 string outputLanguage = model.OutputLanguage;
                 string direction = inputLanguage + "-" + outputLanguage;
                 model.OutputText = await wrapper.TranslateText(model.InputText, direction);
+                model.Languages = new List<string>(TempData["Languages"] as string[]);
 
                 ModelState.Clear();
 
@@ -36,9 +39,14 @@ namespace YandexTranslateCoreSdkDemo.Controllers
         [HttpPost]      
         public async Task<ActionResult> GetLanguages(TranslateViewModel model)
         {
+            if (string.IsNullOrEmpty(model.Key))
+            {
+                throw new Exception("Empty API Key");
+            }
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = model.Key;
             model.Languages = await wrapper.GetLanguages();
+            TempData["Languages"] = model.Languages;
             return View("Index", model);
         }
     }
