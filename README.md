@@ -8,6 +8,12 @@ https://tech.yandex.com/translate
 
 Project includes C# library with wrapper methods for Yandex Translate API, Visual Studio unit tests for this library and WPF demo application for library. Project also includes .NET Core library, test for it and ASP.NET Core demo application.
 
+## Nuget
+
+You can add .NET Framework library to your project using Nuget:
+
+https://www.nuget.org/packages/YandexTranslateCSharpSdk
+
 ## How to use
 
     YandexTranslateSdk wrapper = new YandexTranslateSdk();
