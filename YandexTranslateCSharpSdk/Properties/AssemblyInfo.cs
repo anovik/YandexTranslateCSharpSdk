@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("YandexTranslateCSharpSdk")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("C# wrapper SDK for Yandex.Translate API")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Anna Novikova")]
 [assembly: AssemblyProduct("YandexTranslateCSharpSdk")]
 [assembly: AssemblyCopyright("Copyright ©2016-2017 Anna Novikova")]
 [assembly: AssemblyTrademark("")]
