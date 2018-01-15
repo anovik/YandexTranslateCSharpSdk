@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-#if !NETCOREAPP1_1
+#if !NETCOREAPP2_0
 using System.Web.Script.Serialization;
 #else
 using Newtonsoft.Json;
@@ -39,7 +39,7 @@ namespace YandexTranslateCSharpSdk
         {
             string response = await PostData(text, direction,
              "https://translate.yandex.net/api/v1.5/tr.json/translate?", "application/json");
-#if NETCOREAPP1_1
+#if NETCOREAPP2_0
             var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(response); 
 #else
             var dict = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(response);
