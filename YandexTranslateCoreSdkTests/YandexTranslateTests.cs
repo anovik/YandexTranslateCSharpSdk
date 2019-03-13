@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Xunit;
 using YandexTranslateCSharpSdk;
 
-namespace YandexTranlateCoreSdkTests
+namespace YandexTranslateCoreSdkTests
 {
     public class YandexTranslateTests
     {
