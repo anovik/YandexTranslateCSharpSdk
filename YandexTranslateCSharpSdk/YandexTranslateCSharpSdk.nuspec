@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.1"?>
 <package >
   <metadata>
     <id>$id$</id>
@@ -10,8 +10,8 @@
     <projectUrl>https://github.com/anovik/YandexTranslateCSharpSdk</projectUrl>    
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release</releaseNotes>
-    <copyright>Copyright @2017 Anna Novikova</copyright>
+    <releaseNotes>.NET Framework 4.0-4.7 support</releaseNotes>
+    <copyright>Copyright @2017-2019 Anna Novikova</copyright>
     <tags>yandex translate http httpclient</tags>
   </metadata>
 </package>

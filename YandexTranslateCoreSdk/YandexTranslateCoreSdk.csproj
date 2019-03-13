@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Anna Novikova</Authors>
+    <Company>Anna Novikova</Company>
+    <PackageLicenseUrl>https://github.com/anovik/YandexTranslateCSharpSdk/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/anovik/YandexTranslateCSharpSdk</PackageProjectUrl>
+    <PackageTags>yandex translate http httpclient</PackageTags>
+    <Description>YandexTranslateCSharpSdk .NET Core version</Description>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
