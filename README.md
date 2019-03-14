@@ -16,6 +16,10 @@ You can add .NET Framework library to your project using Nuget:
 
 https://www.nuget.org/packages/YandexTranslateCSharpSdk
 
+You can add .NET core library to your project using Nuget:
+
+https://www.nuget.org/packages/YandexTranslateCoreSdk/
+
 ## How to use
 
     YandexTranslateSdk wrapper = new YandexTranslateSdk();
