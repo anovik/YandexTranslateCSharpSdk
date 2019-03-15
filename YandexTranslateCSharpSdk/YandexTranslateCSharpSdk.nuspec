@@ -1,15 +1,15 @@
-<?xml version="1.1"?>
+<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <id>YandexTranslateCSharpSdk</id>
+    <version>1.1.0</version>
+    <title>YandexTranslateCSharpSdk</title>
+    <authors>Anna Novikova</authors>
+    <owners>Anna Novikova</owners>
     <licenseUrl>https://github.com/anovik/YandexTranslateCSharpSdk/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/anovik/YandexTranslateCSharpSdk</projectUrl>    
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>.NET C# wrapper for Yandex.Translate</description>
     <releaseNotes>.NET Framework 4.0-4.7 support</releaseNotes>
     <copyright>Copyright @2017-2019 Anna Novikova</copyright>
     <tags>yandex translate http httpclient</tags>
