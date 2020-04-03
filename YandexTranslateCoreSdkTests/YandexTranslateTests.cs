@@ -35,7 +35,7 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = false;
-            List<string> languages = await wrapper.GetLanguages();
+            List<string> languages = await wrapper.GetLanguagesAsync();
             Assert.NotEqual(languages, null);
             Assert.True(languages.Contains("en"));
             Assert.True(languages.Contains("ru"));
@@ -47,7 +47,7 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            List<string> languages = await wrapper.GetLanguages();
+            List<string> languages = await wrapper.GetLanguagesAsync();
             Assert.NotEqual(languages, null);
             Assert.True(languages.Contains("en"));
             Assert.True(languages.Contains("ru"));
@@ -59,7 +59,7 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = false;
-            string result = await wrapper.DetectLanguage("Привет");
+            string result = await wrapper.DetectLanguageAsync("Привет");
             Assert.Equal(result, "ru");
         }
 
@@ -69,7 +69,7 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            string result = await wrapper.DetectLanguage(_randomEnglishText);
+            string result = await wrapper.DetectLanguageAsync(_randomEnglishText);
             Assert.Equal(result, "en");
         }
 
@@ -79,7 +79,7 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = false;
-            string translatedText = await wrapper.TranslateText(_randomEnglishText, "en-ru");
+            string translatedText = await wrapper.TranslateTextAsync(_randomEnglishText, "en-ru");
             Console.WriteLine(translatedText);
             Assert.True(!string.IsNullOrEmpty(translatedText));
         }
@@ -90,7 +90,7 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            string translatedText = await wrapper.TranslateText(_randomEnglishText, "en-ru");
+            string translatedText = await wrapper.TranslateTextAsync(_randomEnglishText, "en-ru");
             Console.WriteLine(translatedText);
             Assert.True(!string.IsNullOrEmpty(translatedText));
         }
@@ -100,7 +100,7 @@ namespace YandexTranslateCoreSdkTests
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = "KeyNotExists";            
-            await Assert.ThrowsAsync<YandexTranslateException>(() => wrapper.GetLanguages());
+            await Assert.ThrowsAsync<YandexTranslateException>(() => wrapper.GetLanguagesAsync());
         }
 
         [Fact]        
@@ -108,7 +108,7 @@ namespace YandexTranslateCoreSdkTests
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = null;
-            await Assert.ThrowsAsync<YandexTranslateException>(() => wrapper.GetLanguages());
+            await Assert.ThrowsAsync<YandexTranslateException>(() => wrapper.GetLanguagesAsync());
         }
 
         [Fact]
@@ -118,7 +118,7 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            await Assert.ThrowsAsync<YandexTranslateException>(() => wrapper.TranslateText(_randomEnglishText, "BAD"));            
+            await Assert.ThrowsAsync<YandexTranslateException>(() => wrapper.TranslateTextAsync(_randomEnglishText, "BAD"));            
         }
     }
 }

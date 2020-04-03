@@ -21,9 +21,9 @@ namespace YandexTranslateCSharpSdk
     {
         internal string ApiKey { get; set; }
 
-        internal async Task<string> DetectLanguageXml(string text)
+        internal async Task<string> DetectLanguageXmlAsync(string text)
         {
-            string response = await PostData(text, "https://translate.yandex.net/api/v1.5/tr/detect?",
+            string response = await PostDataAsync(text, "https://translate.yandex.net/api/v1.5/tr/detect?",
                "application/xml");
             XmlDocument xmlDoc = new XmlDocument();            
             xmlDoc.LoadXml(response);
@@ -35,9 +35,9 @@ namespace YandexTranslateCSharpSdk
             return null;
             
         }
-        internal async Task<string> DetectLanguageJson(string text)
+        internal async Task<string> DetectLanguageJsonAsync(string text)
         {
-            string response = await PostData(text, "https://translate.yandex.net/api/v1.5/tr.json/detect?",
+            string response = await PostDataAsync(text, "https://translate.yandex.net/api/v1.5/tr.json/detect?",
                 "application/json");
 #if NETCORE
             var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(response); 
@@ -48,7 +48,7 @@ namespace YandexTranslateCSharpSdk
             return lang == null ? null : lang.ToString();
         }
 
-        private async Task<string> PostData(string text, string url, string mediaType)
+        private async Task<string> PostDataAsync(string text, string url, string mediaType)
         {
             try
             {

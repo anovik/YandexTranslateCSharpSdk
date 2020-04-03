@@ -22,9 +22,9 @@ namespace YandexTranslateCSharpSdk
     {
         internal string ApiKey { get; set; }
 
-        internal async Task<string> TranslateTextXml(string text, string direction)
+        internal async Task<string> TranslateTextXmlAsync(string text, string direction)
         {
-            string response = await PostData(text, direction,
+            string response = await PostDataAsync(text, direction,
                 "https://translate.yandex.net/api/v1.5/tr/translate?", "application/xml");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(response);
@@ -35,9 +35,9 @@ namespace YandexTranslateCSharpSdk
             }
             return null;
         }
-        internal async Task<string> TranslateTextJson(string text, string direction)
+        internal async Task<string> TranslateTextJsonAsync(string text, string direction)
         {
-            string response = await PostData(text, direction,
+            string response = await PostDataAsync(text, direction,
              "https://translate.yandex.net/api/v1.5/tr.json/translate?", "application/json");
 #if NETCORE
             var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(response); 
@@ -65,7 +65,7 @@ namespace YandexTranslateCSharpSdk
             return null;
         }
 
-        private async Task<string> PostData(string text, string direction, string url, string mediaType)
+        private async Task<string> PostDataAsync(string text, string direction, string url, string mediaType)
         {
             try
             {
