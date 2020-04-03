@@ -22,10 +22,12 @@ https://www.nuget.org/packages/YandexTranslateCoreSdk/
 
 ## How to use
 
-    YandexTranslateSdk wrapper = new YandexTranslateSdk();
-    wrapper.ApiKey = "theKeyYouGotFromYandexHere";
-    string englishText = "Hello, World";
-    string translatedText = await wrapper.TranslateText(englishText, "en-fr");
+```cs
+YandexTranslateSdk wrapper = new YandexTranslateSdk();
+wrapper.ApiKey = "theKeyYouGotFromYandexHere";
+string englishText = "Hello, World";
+string translatedText = await wrapper.TranslateText(englishText, "en-fr");
+```
 
 ## Prerequisites
 Requires .NET Framework 4.0 or higher or .NET Core. The library is based on HttpClient. To use it in .NET 4.0, use Nuget package https://www.nuget.org/packages/Microsoft.Net.Http, versions of .NET Framework 4.5 or higher and .NET Core have HttpClient by default.
