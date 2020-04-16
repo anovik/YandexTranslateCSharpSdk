@@ -23,10 +23,10 @@ namespace YandexTranslateCoreSdkDemo.Controllers
             {
                 YandexTranslateSdk wrapper = new YandexTranslateSdk();
                 wrapper.ApiKey = model.Key;
-                string inputLanguage = await wrapper.DetectLanguage(model.InputText);
+                string inputLanguage = await wrapper.DetectLanguageAsync(model.InputText);
                 string outputLanguage = model.OutputLanguage;
                 string direction = inputLanguage + "-" + outputLanguage;
-                model.OutputText = await wrapper.TranslateText(model.InputText, direction);
+                model.OutputText = await wrapper.TranslateTextAsync(model.InputText, direction);
                 model.Languages = new List<string>(TempData["Languages"] as string[]);
 
                 ModelState.Clear();
@@ -45,7 +45,7 @@ namespace YandexTranslateCoreSdkDemo.Controllers
             }
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = model.Key;
-            model.Languages = await wrapper.GetLanguages();
+            model.Languages = await wrapper.GetLanguagesAsync();
             TempData["Languages"] = model.Languages;
             return View("Index", model);
         }

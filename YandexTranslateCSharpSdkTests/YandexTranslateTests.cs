@@ -39,7 +39,7 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = false;
-            List<string> languages = await wrapper.GetLanguages();            
+            List<string> languages = await wrapper.GetLanguagesAsync();            
             Assert.AreNotEqual(languages, null);
             Assert.IsTrue(languages.Contains("en"));
             Assert.IsTrue(languages.Contains("ru"));
@@ -51,7 +51,7 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            List<string> languages = await wrapper.GetLanguages();
+            List<string> languages = await wrapper.GetLanguagesAsync();
             Assert.AreNotEqual(languages, null);
             Assert.IsTrue(languages.Contains("en"));
             Assert.IsTrue(languages.Contains("ru"));
@@ -63,7 +63,7 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = false;
-            string result = await wrapper.DetectLanguage("Привет");
+            string result = await wrapper.DetectLanguageAsync("Привет");
             Assert.AreEqual(result, "ru");
         }
 
@@ -73,7 +73,7 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            string result = await wrapper.DetectLanguage(_randomEnglishText);
+            string result = await wrapper.DetectLanguageAsync(_randomEnglishText);
             Assert.AreEqual(result, "en");
         }
 
@@ -83,7 +83,7 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = false;
-            string translatedText = await wrapper.TranslateText(_randomEnglishText, "en-ru");
+            string translatedText = await wrapper.TranslateTextAsync(_randomEnglishText, "en-ru");
             Console.WriteLine(translatedText);
             Assert.IsTrue(!string.IsNullOrEmpty(translatedText));
         }
@@ -94,7 +94,7 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            string translatedText = await wrapper.TranslateText(_randomEnglishText, "en-ru");
+            string translatedText = await wrapper.TranslateTextAsync(_randomEnglishText, "en-ru");
             Console.WriteLine(translatedText);
             Assert.IsTrue(!string.IsNullOrEmpty(translatedText));
         }
@@ -105,7 +105,7 @@ namespace YandexTranslateCSharpSdkTests
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = "KeyNotExists";
-            List<string> languages = await wrapper.GetLanguages();
+            List<string> languages = await wrapper.GetLanguagesAsync();
         }
 
         [TestMethod]
@@ -114,7 +114,7 @@ namespace YandexTranslateCSharpSdkTests
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = null;
-            List<string> languages = await wrapper.GetLanguages();
+            List<string> languages = await wrapper.GetLanguagesAsync();
         }
 
         [TestMethod]
@@ -124,7 +124,7 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            string translatedText = await wrapper.TranslateText(_randomEnglishText, "BAD");            
+            string translatedText = await wrapper.TranslateTextAsync(_randomEnglishText, "BAD");            
         }
     }
 }

@@ -20,10 +20,10 @@ namespace YandexTranslateCSharpSdk
     {
         internal string ApiKey { get; set; }
 
-        internal async Task<List<string>> GetLanguagesXml()
+        internal async Task<List<string>> GetLanguagesXmlAsync()
         {
             List<string> languages = new List<string>();
-            string response = await PostData("https://translate.yandex.net/api/v1.5/tr/getLangs?", "application/xml");
+            string response = await PostDataAsync("https://translate.yandex.net/api/v1.5/tr/getLangs?", "application/xml");
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(response);            
             XmlNodeList list = xmlDoc.GetElementsByTagName("Item");
@@ -34,9 +34,9 @@ namespace YandexTranslateCSharpSdk
             return languages;
         }
 
-        internal async Task<List<string>> GetLanguagesJson()
+        internal async Task<List<string>> GetLanguagesJsonAsync()
         {            
-            string response = await PostData("https://translate.yandex.net/api/v1.5/tr.json/getLangs?", "application/json");
+            string response = await PostDataAsync("https://translate.yandex.net/api/v1.5/tr.json/getLangs?", "application/json");
 #if NETCORE
             var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(response);
             var lang = JsonConvert.DeserializeObject<Dictionary<string, object>>(dict["langs"].ToString());
@@ -47,7 +47,7 @@ namespace YandexTranslateCSharpSdk
             return new List<string>(lang.Keys);           
         }
 
-        private async Task<string> PostData(string url, string mediaType)
+        private async Task<string> PostDataAsync(string url, string mediaType)
         {
             try
             {

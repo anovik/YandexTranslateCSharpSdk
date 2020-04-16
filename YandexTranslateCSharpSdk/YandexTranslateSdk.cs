@@ -15,9 +15,9 @@ namespace YandexTranslateCSharpSdk
 
         public string ApiKey { get; set; }
 
-        public bool IsJson { get; set; }        
+        public bool IsJson { get; set; }
 
-        public async Task<string> DetectLanguage(string text)
+        public async Task<string> DetectLanguageAsync(string text)
         {
             if (string.IsNullOrEmpty(ApiKey))
             {
@@ -26,15 +26,15 @@ namespace YandexTranslateCSharpSdk
             detectManager.ApiKey = ApiKey;
             if (IsJson)
             {
-                return await detectManager.DetectLanguageJson(text);
+                return await detectManager.DetectLanguageJsonAsync(text);
             }
             else
             {
-                return await detectManager.DetectLanguageXml(text);
+                return await detectManager.DetectLanguageXmlAsync(text);
             }
         }
 
-        public async Task<List<string>> GetLanguages()
+        public async Task<List<string>> GetLanguagesAsync()
         {
             if (string.IsNullOrEmpty(ApiKey))
             {
@@ -43,15 +43,15 @@ namespace YandexTranslateCSharpSdk
             languagesManager.ApiKey = ApiKey;
             if (IsJson)
             {
-                return await languagesManager.GetLanguagesJson();
+                return await languagesManager.GetLanguagesJsonAsync();
             }
             else
             {
-                return await languagesManager.GetLanguagesXml();
+                return await languagesManager.GetLanguagesXmlAsync();
             }
         }
 
-        public async Task<string> TranslateText(string text, string direction)
+        public async Task<string> TranslateTextAsync(string text, string direction)
         {
             if (string.IsNullOrEmpty(ApiKey))
             {
@@ -60,11 +60,11 @@ namespace YandexTranslateCSharpSdk
             translateManager.ApiKey = ApiKey;
             if (IsJson)
             {
-                return await translateManager.TranslateTextJson(text, direction);
+                return await translateManager.TranslateTextJsonAsync(text, direction);
             }
             else
             {
-                return await translateManager.TranslateTextXml(text, direction);
+                return await translateManager.TranslateTextXmlAsync(text, direction);
             }
         }
 
