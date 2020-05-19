@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Anna Novikova</Authors>
     <Company>Anna Novikova</Company>
     <PackageLicenseUrl>https://github.com/anovik/YandexTranslateCSharpSdk/blob/master/LICENSE.md</PackageLicenseUrl>
@@ -13,7 +13,7 @@
     <RepositoryType />
     <PackageIconUrl></PackageIconUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Copyright>@ 2017-2019 Anna Novikova</Copyright>
+    <Copyright>@ 2017-2020 Anna Novikova</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
     <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />

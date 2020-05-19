@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Hosting;
 using System;
 
 namespace YandexTranslateCoreSdkDemo
@@ -11,7 +11,7 @@ namespace YandexTranslateCoreSdkDemo
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(option => option.EnableEndpointRouting = false);
 
             // Adds a default in-memory implementation of IDistributedCache.
             services.AddDistributedMemoryCache();
@@ -26,7 +26,7 @@ namespace YandexTranslateCoreSdkDemo
 
         public IConfigurationRoot Configuration { get; }
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -37,11 +37,8 @@ namespace YandexTranslateCoreSdkDemo
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
+        { 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -8,7 +8,7 @@ YandexTranslateCSharpSdk is a .NET C# library providing access for Yandex Transl
 
 https://tech.yandex.com/translate
 
-Project includes C# library with wrapper methods for Yandex Translate API, Visual Studio unit tests for this library and WPF demo application for library. Project also includes .NET Core 2.0 library, tests for it and ASP.NET Core demo application.
+Project includes C# library with wrapper methods for Yandex Translate API, Visual Studio unit tests for this library and WPF demo application for library. Project also includes .NET Core 3.1 library, tests for it and ASP.NET Core demo application.
 
 ## Nuget
 

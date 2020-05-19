@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Anna Novikova")]
 [assembly: AssemblyProduct("YandexTranslateCSharpSdk")]
-[assembly: AssemblyCopyright("Copyright ©2016-2019 Anna Novikova")]
+[assembly: AssemblyCopyright("Copyright ©2016-2020 Anna Novikova")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
