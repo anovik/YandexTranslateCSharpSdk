@@ -8,12 +8,13 @@
     <PackageProjectUrl>https://github.com/anovik/YandexTranslateCSharpSdk</PackageProjectUrl>
     <PackageTags>yandex translate http httpclient</PackageTags>
     <Description>YandexTranslateCSharpSdk .NET Core version</Description>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Language full descriptions are now available.</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/anovik/YandexTranslateCSharpSdk</RepositoryUrl>
     <RepositoryType />
     <PackageIconUrl></PackageIconUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Copyright>@ 2017-2020 Anna Novikova</Copyright>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
