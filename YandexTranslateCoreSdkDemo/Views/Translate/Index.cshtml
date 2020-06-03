@@ -23,7 +23,7 @@
         <br />
         <div class="form-group">
             @Html.LabelFor(model => model.OutputLanguage, new { style = "display: inline-block; width: 150px;" })
-            @Html.DropDownListFor(model => model.OutputLanguage, new SelectList(Model.Languages))
+            @Html.DropDownListFor(model => model.OutputLanguage, new SelectList(Model.Languages, "Key", "Value"))
             @Html.ValidationMessageFor(model => model.OutputLanguage, null, new { @class = "text-danger" })
             <input type="submit" value="Load Languages" formaction= @Url.Action("GetLanguages", "Translate") class="btn btn-default" />
         </div>

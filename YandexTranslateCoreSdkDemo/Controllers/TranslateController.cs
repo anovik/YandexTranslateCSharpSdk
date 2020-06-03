@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using YandexTranslateCoreSdkDemo.Models;
 using YandexTranslateCSharpSdk;
@@ -27,7 +28,7 @@ namespace YandexTranslateCoreSdkDemo.Controllers
                 string outputLanguage = model.OutputLanguage;
                 string direction = inputLanguage + "-" + outputLanguage;
                 model.OutputText = await wrapper.TranslateTextAsync(model.InputText, direction);
-                model.Languages = new List<string>(TempData["Languages"] as string[]);
+                model.Languages = TempData["Languages"] as Dictionary<string, string>;
 
                 ModelState.Clear();
 

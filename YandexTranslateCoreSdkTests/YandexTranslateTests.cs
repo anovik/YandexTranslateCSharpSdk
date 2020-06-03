@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 using YandexTranslateCSharpSdk;
@@ -35,10 +35,11 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = false;
-            List<string> languages = await wrapper.GetLanguagesAsync();
+            var languages = await wrapper.GetLanguagesAsync();
+            var languageCodes = languages.Keys.ToList();
             Assert.NotEqual(languages, null);
-            Assert.True(languages.Contains("en"));
-            Assert.True(languages.Contains("ru"));
+            Assert.True(languageCodes.Contains("en"));
+            Assert.True(languageCodes.Contains("ru"));
         }
 
         [Fact]
@@ -47,10 +48,11 @@ namespace YandexTranslateCoreSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            List<string> languages = await wrapper.GetLanguagesAsync();
+            var languages = await wrapper.GetLanguagesAsync();
+            var languageCodes = languages.Keys.ToList();
             Assert.NotEqual(languages, null);
-            Assert.True(languages.Contains("en"));
-            Assert.True(languages.Contains("ru"));
+            Assert.True(languageCodes.Contains("en"));
+            Assert.True(languageCodes.Contains("ru"));
         }
 
         [Fact]

@@ -7,13 +7,13 @@ namespace YandexTranslateCoreSdkDemo.Models
     {
         public TranslateViewModel()
         {
-            Languages = new List<string>();
+            Languages = new Dictionary<string, string>();
         }
 
         [Required]
         public string Key { get; set; }        
 
-        public List<string> Languages { get; set; }
+        public Dictionary<string,string> Languages { get; set; }
 
         [Required]
         [Display(Name ="Output Language")]

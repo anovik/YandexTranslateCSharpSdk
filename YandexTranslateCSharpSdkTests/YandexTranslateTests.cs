@@ -4,6 +4,7 @@ using YandexTranslateCSharpSdk;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 
 namespace YandexTranslateCSharpSdkTests
 {
@@ -39,10 +40,11 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = false;
-            List<string> languages = await wrapper.GetLanguagesAsync();            
-            Assert.AreNotEqual(languages, null);
-            Assert.IsTrue(languages.Contains("en"));
-            Assert.IsTrue(languages.Contains("ru"));
+            var languages = await wrapper.GetLanguagesAsync();
+            var languageCodes = languages.Keys.ToList();
+            Assert.AreNotEqual(languageCodes, null);
+            Assert.IsTrue(languageCodes.Contains("en"));
+            Assert.IsTrue(languageCodes.Contains("ru"));
         }
 
         [TestMethod]
@@ -51,10 +53,11 @@ namespace YandexTranslateCSharpSdkTests
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = _apiKey;
             wrapper.IsJson = true;
-            List<string> languages = await wrapper.GetLanguagesAsync();
-            Assert.AreNotEqual(languages, null);
-            Assert.IsTrue(languages.Contains("en"));
-            Assert.IsTrue(languages.Contains("ru"));
+            var languages = await wrapper.GetLanguagesAsync();
+            var languageCodes = languages.Keys.ToList();
+            Assert.AreNotEqual(languageCodes, null);
+            Assert.IsTrue(languageCodes.Contains("en"));
+            Assert.IsTrue(languageCodes.Contains("ru"));
         }
 
         [TestMethod]
@@ -105,7 +108,7 @@ namespace YandexTranslateCSharpSdkTests
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = "KeyNotExists";
-            List<string> languages = await wrapper.GetLanguagesAsync();
+            var languages = await wrapper.GetLanguagesAsync();
         }
 
         [TestMethod]
@@ -114,7 +117,7 @@ namespace YandexTranslateCSharpSdkTests
         {
             YandexTranslateSdk wrapper = new YandexTranslateSdk();
             wrapper.ApiKey = null;
-            List<string> languages = await wrapper.GetLanguagesAsync();
+            var languages = await wrapper.GetLanguagesAsync();
         }
 
         [TestMethod]

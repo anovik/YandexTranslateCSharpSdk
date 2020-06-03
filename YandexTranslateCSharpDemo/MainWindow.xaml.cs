@@ -101,23 +101,26 @@ namespace YandexTranslateCSharpDemo
         {
             if (apiKey != null)
             {
-                wrapper.ApiKey = apiKey;
-                List<string> languages;
+                wrapper.ApiKey = apiKey;                
                 try
                 {
-                    languages = await wrapper.GetLanguagesAsync();
+                    var languages = await wrapper.GetLanguagesAsync();
+                    languagesCombo.ItemsSource = languagesCombo2.ItemsSource = languages;
+                    languagesCombo.DisplayMemberPath = "Value";
+                    languagesCombo.SelectedValuePath = "Key";
+                    languagesCombo2.DisplayMemberPath = "Value";
+                    languagesCombo2.SelectedValuePath = "Key";
+                    if (languagesCombo.Items.Count > 0)
+                    {
+                        languagesCombo.SelectedIndex = 0;
+                        languagesCombo2.SelectedIndex = 0;
+                    }
                 }
                 catch(YandexTranslateException ex)
                 {
                     MessageBox.Show(ex.Message);
                     return;
-                }
-                languagesCombo.ItemsSource = languagesCombo2.ItemsSource = languages;
-                if (languagesCombo.Items.Count > 0)
-                {
-                    languagesCombo.SelectedIndex = 0;
-                    languagesCombo2.SelectedIndex = 0;
-                }
+                }                
             }
         }
     }
