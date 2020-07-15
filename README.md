@@ -10,6 +10,14 @@ https://tech.yandex.com/translate
 
 Project includes C# library with wrapper methods for Yandex Translate API, Visual Studio unit tests for this library and WPF demo application for library. Project also includes .NET Core 3.1 library, tests for it and ASP.NET Core demo application.
 
+## Important update
+
+Yandex is shutting up Yandex Translate Service, it is scheduled on August 15, 2020:
+
+https://storage.yandexcloud.net/yc-materials/emails/html/yandex-translate-en.html
+
+Service will be migrated to Yandex Cloud but there will be no free plans there, only introductory grants.
+
 ## Nuget
 
 You can add .NET Framework library to your project using Nuget:
